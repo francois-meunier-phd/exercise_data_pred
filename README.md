@@ -52,6 +52,8 @@ With the final computed sum (on all days before departure) :
 
 The use of Random Forests regressor and Gradient boosting showed that these approaches give similar perfomances.
 
+Results and real values (for comparison) are stored in a csv file called "results_classical_ml.csv", where information on the travel (date, stations names, ...) are also mentionned.
+
 ## Deep learning approach
 In this context, deep learning has a reason to be used when time series are considered. However, it is not possible to implement it when the prediction has to be done at day -90, as we don't have, in this case, an history od the current time series. That's why this set of methods could only be used from day -60 (in our task of prediction).
 ### Choice of structure
@@ -62,6 +64,7 @@ This may be reconsidered with further studies.
 ### Approach proposed
 ***
 LSTM for prediction needs sequential data, where the input is made of one or several time series, and the output is a vector of targets.
+As usual for this kind of algorithm, scaling is necessary to prevent the over importance of high amplitude features.
 In this case, we tried an network thta took as input the prices of the last 14 days (fixed training window), and as output the demand of the 14th day.
 The network is made of a 100 neurons LSTM layer and a 100 neurons linear layer, which was experimentally well performing on equivalent tasks.
 

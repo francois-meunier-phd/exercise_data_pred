@@ -20,7 +20,9 @@ def extraction_validation_set(dataset_test, days_to_be_used):
             available_part = df_current[df_current.sale_day_x + 1 <= current_day]
             unavailable_part = df_current[df_current.sale_day_x + 1 > current_day]
             complete_preprocessed_dataset.append([available_part, unavailable_part])
-            information_on_travel.append([df_current.sale_day_x, df_current.departure_date, df_current.origin_station_name, df_current.destination_station_name])
+            information_on_travel.append([current_day, df_current.iloc[0].departure_date, 
+                                          df_current.iloc[0].origin_station_name, 
+                                          df_current.iloc[0].destination_station_name])
     
     return complete_preprocessed_dataset, information_on_travel
 
