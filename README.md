@@ -3,10 +3,10 @@
 People reading this documentation are assumed to have already seen the presentation of this work/challenge.
 We will simply explain our approach, things that have worked and others not.
 Needed libraies are in requirements.txt.
-To make everything work :
+To make everything work, go to a location where you can get the code :
 ```
-$ git clone https://example.com
-$ cd ../path/to/the/file
+$ git clone git@github.com:francois-meunier-phd/exercise_data_pred.git
+$ cd exercise_data_pred
 ```
 If you want, it is possible (but not necessary in this case) to create a new environement :
 ```
@@ -20,6 +20,7 @@ $ pip install -r requirements
 ```
 For conveniance (and because of lack of time if the 4 to 8 hours of challenge are respected) : the code is in the main jupyter notebook called "global_main.ipynb", and calls separate external files for functions that can be factorized.
 A next step of integration would be indeed to create a clean package that would be easily transportable and reused for pre-prod goals.
+Data need to be in a directory called "dataset" at the root of the repo.
 
 ## Classical Machine Learning approach
 ### Data pretreament
@@ -71,3 +72,5 @@ Performances do not follow our expectations, and therefore were not carried unti
 
 ## Conclusion
 During the few hours spent on this project, we were able to propose a first pipeline for predicting the remaning demand in the future. Although the deep learning approach failed (and more time and computation power would coorect its problems), the classical ML approach seemed to give quite good results.
+
+# François Meunier

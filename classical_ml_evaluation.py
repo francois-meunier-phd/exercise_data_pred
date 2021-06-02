@@ -1,6 +1,7 @@
 from sklearn.ensemble import RandomForestRegressor
 import numpy as np
 
+#classical protocol for evaluating ML from preprocessd data
 def protocol_classical_ML_predictor(complete_preprocessed_dataset, features_kept, regressor, information_on_travel):
 
     prediction_until_travel = []

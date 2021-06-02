@@ -3,6 +3,7 @@ import numpy as np
 from tqdm import tqdm
 from sklearn.preprocessing import OneHotEncoder
 
+#Function to get a multi time series for each travel 
 def splitting_travels(df, fewer_static_features):
     
     grouped = df.groupby(fewer_static_features)
@@ -23,13 +24,14 @@ def extraction_validation_set(dataset_test, days_to_be_used):
     
     return complete_preprocessed_dataset, information_on_travel
 
-
+#One hot encoder
 def encode_and_bind(original_dataframe, feature_to_encode):
     dummies = pd.get_dummies(original_dataframe[[feature_to_encode]])
     res = pd.concat([original_dataframe, dummies], axis=1)
     res = res.drop([feature_to_encode], axis=1)
     return(res)
 
+#Cyclic features treatment
 def cyclic_features_transform(features, periodic_features_day, periodic_features_month):
 
     for col in periodic_features_day:
@@ -41,6 +43,8 @@ def cyclic_features_transform(features, periodic_features_day, periodic_features
     
     return features
 
+#For LSTM
+#For training data
 def create_inout_sequences(input_data, tw):
     inout_seq = []
     for df in tqdm(input_data):
@@ -51,7 +55,8 @@ def create_inout_sequences(input_data, tw):
             inout_seq.append((train_seq, train_label))
     return inout_seq
 
-def create_inout_sequences_validation(input_data, tw):
+#For validation data
+def create_inout_sequences_validation(input_data, tw, scaler_price):
     input_data["scaled_price"] = scaler_price.transform(np.array(input_data.price).reshape(-1, 1))
     inout_seq = []; real_target = []
     L = len(input_data)
