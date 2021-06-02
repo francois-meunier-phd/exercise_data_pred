@@ -33,10 +33,11 @@ Then the target is easily defined as demand, and the input features all the othe
 ***
 As we expect to use trees, scaling of features is not necessary.
 Several classical steps have been realized for features pretreatment, and the main ones are :
-A list of frequently asked questions
 1. convertion to float types when possible
 2. one hot encoder for categories
-3. trigonometry transformation for cyclic features (components extracted from dates like day of the month)
+3. trigonometry transformation for cyclic features (components extracted from dates like day of the month).
+
+Moreover, it seems thta some data would need a bit more clearing, as for example
 
 ### Experimentation on validation set
 ***
@@ -51,6 +52,7 @@ With the final computed sum (on all days before departure) :
 The use of Random Forests regressor and Gradient boosting showed that these approaches give similar perfomances.
 
 ## Deep learning approach
+In this context, deep learning has a reason to be used when time series are considered. However, it is not possible to implement it when the prediction has to be done at day -90, as we don't have, in this case, an history od the current time series. That's why this set of methods could only be used from day -60 (in our task of prediction).
 ### Choice of structure
 ***
 When facing time series prediction, the two most appropriated neural networks are GRU and LSTM. The main difference is the number of parameters to tune in each neuron of their networks, as LSTM have 3 and GRU 2. With the forget parameter, LSTM should be able to deal with longer sequences than GRU. With the great number of data we face, we proposed to try LSTM as a prediction problem. 
@@ -66,3 +68,6 @@ The network is made of a 100 neurons LSTM layer and a 100 neurons linear layer, 
 ### First results
 ***
 Performances do not follow our expectations, and therefore were not carried until full validation : indeed, no convergence was seen on our tests. This can be explained with the fact that the selected batch size needed to be short enough for the available computation power for this exercice.
+
+## Conclusion
+During the few hours spent on this project, we were able to propose a first pipeline for predicting the remaning demand in the future. Although the deep learning approach failed (and more time and computation power would coorect its problems), the classical ML approach seemed to give quite good results.
