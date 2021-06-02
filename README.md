@@ -72,5 +72,3 @@ Performances do not follow our expectations, and therefore were not carried unti
 
 ## Conclusion
 During the few hours spent on this project, we were able to propose a first pipeline for predicting the remaning demand in the future. Although the deep learning approach failed (and more time and computation power would coorect its problems), the classical ML approach seemed to give quite good results.
-
-# François Meunier
